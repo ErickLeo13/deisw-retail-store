@@ -1,5 +1,5 @@
 # Build stage: Maven + Temurin 26 JDK
-FROM maven:3.9.16-eclipse-temurin-26-alpine AS build
+FROM maven:3.9.16-eclipse-temurin-26-noble AS build
 WORKDIR /workspace
 
 # copy pom and download dependencies to leverage cache
