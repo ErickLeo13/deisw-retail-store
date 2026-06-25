@@ -49,7 +49,7 @@ pipeline {
         steps {
 			// 1. Enviar el código a analizar a SonarQube
             withSonarQubeEnv('MiSonarServer') {
-                sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=learning-center'
+                sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=retail_store'
             }
 			// 2. Pausar el pipeline y esperar la respuesta del Webhook de SonarQube
 	        script {
