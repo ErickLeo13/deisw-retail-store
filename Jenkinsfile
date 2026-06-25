@@ -1,7 +1,7 @@
 pipeline {
   agent any
   tools {
-    maven 'MAVEN_3_9_11'
+    maven 'MAVEN_3_9_16'
     jdk 'JDK_26'
   }
 	environment {
@@ -14,7 +14,7 @@ pipeline {
   stages {
     stage ('Compile Project') {
       steps {
-        withMaven(maven : 'MAVEN_3_9_11') {
+        withMaven(maven : 'MAVEN_3_9_16') {
             sh 'mvn clean compile'
         }
       }
@@ -22,7 +22,7 @@ pipeline {
 
     stage('Validate Checkstyle') {
       steps {
-        withMaven(maven: 'MAVEN_3_9_11') {
+        withMaven(maven: 'MAVEN_3_9_16') {
           sh 'mvn checkstyle:check'
         }
       }
@@ -30,7 +30,7 @@ pipeline {
 
     stage('Validate Unit Tests') {
       steps {
-        withMaven(maven: 'MAVEN_3_9_11') {
+        withMaven(maven: 'MAVEN_3_9_16') {
           sh 'mvn test'
         }
       }
@@ -38,7 +38,7 @@ pipeline {
 
     stage('Validate Test Coverage') {
       steps {
-        withMaven(maven: 'MAVEN_3_9_11') {
+        withMaven(maven: 'MAVEN_3_9_16') {
           sh 'mvn clean verify jacoco:report'
           sh 'mvn jacoco:check'
         }
@@ -49,7 +49,7 @@ pipeline {
         steps {
 			// 1. Enviar el código a analizar a SonarQube
             withSonarQubeEnv('MiSonarServer') {
-                sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=retail_store'
+                sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=retail-store'
             }
 			// 2. Pausar el pipeline y esperar la respuesta del Webhook de SonarQube
 	        script {
