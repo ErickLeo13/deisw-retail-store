@@ -5,9 +5,9 @@ pipeline {
     jdk 'JDK_26'
   }
 	environment {
-		REGISTRY_USER = "pcsijflo" // Cambia por tu usuario real de Docker Hub
+		REGISTRY_USER = "erickpalomino" // Cambia por tu usuario real de Docker Hub
         // Nombre de la imagen que vamos a crear para nuestra aplicación
-        IMAGE_NAME = "learning-center-platform-small"
+        IMAGE_NAME = "retail-store-u20231a500"
         TAG        = "${env.BUILD_NUMBER}" // Usa el número de ejecución de Jenkins como versión
     }
 
